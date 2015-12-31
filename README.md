@@ -1,5 +1,5 @@
-xdg
-==================
+ansible-xdg
+===========
 <!-- [![Build Status](https://travis-ci.org/mkwmms/ansible-xdg.svg)](https://travis-ci.org/mkwmms/xdg) -->
 
 Configure [xdg] directory settings for [bash], [zsh] & [fish] shells.

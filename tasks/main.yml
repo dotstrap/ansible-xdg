@@ -1,0 +1,27 @@
+---
+
+- name: setup
+  include_vars: "{{ ansible_user_shell | basename }}.yml"
+
+#####=== configure ===#####
+
+- block:
+    - name: bash/zsh | configure | shell initialization
+      blockinfile:
+        dest: "{{ xdg_config_file }}"
+        create: yes
+        backup: no
+        state: "{{ xdg_configure_state }}"
+        marker: "{{ xdg_marker }}"
+        block: "{{ xdg_config_block }}"
+      when: ansible_user_shell | match(".*\/(bash|zsh)")
+
+    - name: fish | configure | shell initialization
+      command: fish -c
+        "set -U XDG_CONFIG_HOME '{{ xdg_config_home }}';
+         set -U XDG_DATA_HOME '{{ xdg_data_home }}';
+         set -U XDG_CACHE_HOME '{{ xdg_cache_home }}';"
+      when: ansible_user_shell | match(".*\/fish")
+  tags:
+    - bootstrap
+    - configure

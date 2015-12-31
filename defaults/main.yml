@@ -1,0 +1,40 @@
+---
+
+#####=== global defaults ===#####
+
+# These defaults are in many of mkwmms' roles; override them to prevent neeeding
+# to override the corresponding role default for each role individually.
+
+# Shell startup file where settings are written to.
+# This role uses the value of this variable if it is defined.
+# default:
+#   - bash: ~/.bash_profile
+#   - zsh: ~/.zshrc
+#   - fish: ~/.config/fish/config.fish
+# shell_config_file
+
+configure_state: present
+
+#####=== xdg defaults ===#####
+
+# The base directory relative to which user specific configuration files should be stored
+xdg_config_home: "{{ ansible_user_dir }}/.config"
+# xdg_config_home: "{{ ansible_user_dir }}/{{
+# (ansible_distribution == 'MacOSX') | ternary('Library/Preferences', '.config') }}"
+
+# The base directory relative to which user specific data files should be stored
+xdg_data_home: "{{ ansible_user_dir }}/.local/share"
+# xdg_data_home: "{{ ansible_user_dir }}/{{
+# (ansible_distribution == 'MacOSX') | ternary('Library/', '.local/share/') }}"
+
+# The base directory relative to which user specific non-essential data files should be stored
+xdg_cache_home: "{{ ansible_user_dir }}/{{
+  (ansible_distribution == 'MacOSX') | ternary('Library/Caches', '.cache') }}"
+
+# The state in which settings are written to xdg_config_file via the blockinfile module.
+# choices: [ present, absent ]
+xdg_configure_state: "{{ configure_state }}"
+
+# The marker line (which surrounds the text block) template.
+# "{mark}" will be replaced with "BEGIN" or "END".
+xdg_marker: "#####=== {mark} Ansible managed XDG directory settings ===#####"

@@ -1,0 +1,3 @@
+---
+
+xdg_config_file: "{{ shell_config_file | default(fish_config_file) }}"

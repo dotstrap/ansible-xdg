@@ -1,0 +1,3 @@
+---
+
+xdg_config_file: "{{ shell_config_file | default(bash_config_file) }}"

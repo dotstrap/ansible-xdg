@@ -2,32 +2,38 @@
 language: python
 python: "2.7"
 
-env:
-  - SITE=test.yml
+# Use the new container infrastructure
+sudo: false
 
-before_install:
-  - sudo apt-get update -qq
+# Install ansible
+addons:
+  apt:
+    packages:
+    - python-pip
 
 install:
-  - sudo apt-get install ansible
+  # Install ansible
+  - pip install git+https://github.com/ansible/ansible.git
 
-  # Add ansible.cfg to pick up roles path.
-  - { echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg
+  # Check ansible version
+  - ansible --version
+
+  # Create ansible.cfg with correct roles_path
+  - printf '[defaults]\nroles_path=../' >ansible.cfg
 
 script:
-  - ansible-playbook -i tests/inventory tests/$SITE --syntax-check
+  # Basic role syntax check
+  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
 
-  - ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo
+  # Run the role
+  - ansible-playbook tests/test.yml -i tests/inventory --connection=local -vvv
 
-  # Run the role/playbook again, checking to make sure it's idempotent.
-  - >
-    ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-
-  # Test if the file is a symbolic link.
+  # Run the role again, checking to make sure it's idempotent
   # - >
-    # [ -h "$HOME/dotstrap/...." ]
-    # && (echo "Files were linked correctly." && exit 0)
-    # || (echo "Files were not linked correctly." && exit 1)
+    # ansible-playbook tests/test.yml -i tests/inventory --connection=local
+    # | grep -q 'changed=0.*failed=0'
+    # && (echo 'Idempotence test: pass' && exit 0)
+    # || (echo 'Idempotence test: fail' && exit 1)
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

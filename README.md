@@ -4,6 +4,13 @@ ansible-xdg
 
 Configure [xdg] directory settings for [bash], [zsh] & [fish] shells.
 
+Installation
+------------
+
+```
+ansible-galaxy install mkwmms.xdg
+```
+
 Requirements
 ------------
 
@@ -12,7 +19,7 @@ None.
 Role Variables
 --------------
 
-See [default variables] & [Variables].
+See [default variables] & [variables].
 
 Dependencies
 ------------
@@ -23,9 +30,9 @@ Example Playbook
 ----------------
 
 ```
-    - hosts: servers
+    - hosts: all
       roles:
-         - { role: mkwmms.xdg }
+         - role: mkwmms.xdg
 ```
 
 Notes

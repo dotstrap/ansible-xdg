@@ -1,6 +1,6 @@
 ansible-xdg
 ===========
-[![Build Status](https://travis-ci.org/mkwmms/ansible-xdg.svg)](https://travis-ci.org/mkwmms/ansible-xdg)
+[![Build Status](https://travis-ci.org/mwilliammyers/ansible-xdg.svg)](https://travis-ci.org/mwilliammyers/ansible-xdg)
 
 Configure [xdg] directory settings for [bash], [zsh] & [fish] shells.
 
@@ -8,7 +8,7 @@ Installation
 ------------
 
 ```
-ansible-galaxy install mkwmms.xdg
+ansible-galaxy install mwilliammyers.xdg
 ```
 
 Requirements
@@ -32,7 +32,7 @@ Example Playbook
 ```
     - hosts: all
       roles:
-         - role: mkwmms.xdg
+         - role: mwilliammyers.xdg
 ```
 
 Notes
@@ -49,13 +49,13 @@ GPLv3
 Author Information
 ------------------
 
-[@mkwmms]
+[@mwilliammyers]
 
-[@mkwmms]: https://github.com/mkwmms
+[@mwilliammyers]: https://github.com/mwilliammyers
 [aura]: https://github.com/aurapm/aura
 [bash]: https://www.gnu.org/software/bash/manual/bashref.html
 [default variables]: defaults/main.yml
-[dotstrap]: https://github.com/mkwmms/dotstrap
+[dotstrap]: https://github.com/mwilliammyers/dotstrap
 [fasd]: https://github.com/clvv/fasd
 [files]: files/
 [fish]: http://fishshell.com/

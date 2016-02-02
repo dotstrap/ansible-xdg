@@ -2,7 +2,7 @@
 
 #####=== global defaults ===#####
 
-# These defaults are in many of mkwmms' roles; override them to prevent neeeding
+# These defaults are in many of mwilliammyers' roles; override them to prevent neeeding
 # to override the corresponding role default for each role individually.
 
 # Shell startup file where settings are written to.

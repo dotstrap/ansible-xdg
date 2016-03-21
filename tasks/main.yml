@@ -2,6 +2,7 @@
 
 - name: setup
   include_vars: "{{ ansible_user_shell | basename }}.yml"
+  tags: always
 
 #####=== configure ===#####
 

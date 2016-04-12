@@ -1,6 +1,6 @@
 ansible-xdg
 ===========
-[![Build Status](https://travis-ci.org/mwilliammyers/ansible-xdg.svg)](https://travis-ci.org/mwilliammyers/ansible-xdg)
+[![Build Status](https://travis-ci.org/dotstrap/ansible-xdg.svg)](https://travis-ci.org/dotstrap/ansible-xdg)
 
 Configure [xdg] directory settings for [bash], [zsh] & [fish] shells.
 
@@ -8,7 +8,7 @@ Installation
 ------------
 
 ```
-ansible-galaxy install mwilliammyers.xdg
+ansible-galaxy install dotstrap.xdg
 ```
 
 Requirements
@@ -32,7 +32,7 @@ Example Playbook
 ```
     - hosts: all
       roles:
-         - role: mwilliammyers.xdg
+         - role: dotstrap.xdg
 ```
 
 Notes

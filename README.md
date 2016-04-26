@@ -44,7 +44,7 @@ __Warning__: This role modifies your default shell configuration file, eg.
 License
 -------
 
-GPLv3
+MIT
 
 Author Information
 ------------------

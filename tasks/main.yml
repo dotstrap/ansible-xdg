@@ -25,4 +25,6 @@
       when: ansible_user_shell | match(".*\/fish")
   tags:
     - bootstrap
+    - bootstrap_xdg
     - configure
+    - configure_xdg
